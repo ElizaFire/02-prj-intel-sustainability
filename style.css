@@ -1,1 +1,122 @@
 /* Add your CSS here */
+
+/* Make the timeline cards scroll horizontally on large screens */
+section {
+  display: flex;                /* Arrange cards in a row */
+  flex-direction: row;
+  overflow-x: auto;             /* Enable horizontal scrolling */
+  gap: 1.5rem;                  /* Space between cards */
+  padding: 2rem 1rem;
+  scroll-behavior: smooth;
+}
+
+/* Style each timeline card */
+section > div {
+  background: #fdf6e3;    /* Light tan background */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  min-width: 240px;
+  max-width: 280px;
+  flex: 0 0 240px;
+  padding: 1.5rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.6s, box-shadow 0.6s; /* Slower transition for movement and shadow */
+  cursor: pointer;
+  position: relative;
+}
+
+/* Scale up cards slightly on hover or focus */
+section > div:hover,
+section > div:focus {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 18px rgba(0,113,197,0.15);
+}
+
+/* Hide card text by default, show only image and h3 (image title) */
+section > div p,
+section > div h2 {
+  opacity: 0;
+  transition: opacity 0.3s;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Show text on hover */
+section > div:hover p,
+section > div:hover h2 {
+  opacity: 1;
+  height: auto;
+  margin: initial;
+  padding: initial;
+  transition: opacity 0.3s;
+}
+
+/* Always show the image and h3 (image title) */
+section > div img,
+section > div h3 {
+  opacity: 1;
+}
+
+/* Responsive: stack cards vertically on small screens */
+@media (max-width: 700px) {
+  section {
+    flex-direction: column;     /* Stack cards vertically */
+    overflow-x: hidden;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+  }
+  section > div {
+    width: 98%;
+    min-width: unset;
+    max-width: 100%;
+    margin: 0 auto 1rem auto;
+  }
+}
+
+/* Style all images inside timeline cards for consistent appearance */
+section > div img {
+  width: 220px;           /* Fixed width for all card images */
+  height: 140px;          /* Fixed height for all card images */
+  object-fit: cover;      /* Crop images to fill the area */
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;      /* Center the image horizontally */
+  margin-right: auto;
+}
+
+/* Style the Intel logo in the header */
+/* The logo will fill the entire width of the page */
+header img {
+  width: 100vw;         /* Fill the entire viewport width */
+  max-width: 100%;     /* Prevent any max width limit */
+  display: block;
+  margin-bottom: 16px;
+  margin-left: 10px;
+  margin-right: 010px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style the main heading (h1) */
+h1 {
+  font-size: 60px;         /* Increase font size */
+  font-family: serif;      /* Use a serif font */
+  text-align: center;      /* Center the text */
+}
+
+/* Style all <p> elements: center text, use serif font, and increase size */
+p {
+  text-align: center;
+  font-family: serif;
+  font-size: 30px;
+}
+
+/* Set card <p> font size to 16px, overriding the global <p> style */
+section > div p {
+  font-size: 16px;
+  text-align: left; /* Optional: left-align card text for readability */
+  font-family: inherit; /* Use the default font unless you want serif */
+}
